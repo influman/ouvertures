@@ -1,0 +1,63 @@
+{
+	"plugin_id": "ouvertures",
+	"name_fr": "Etat des Ouvertures",
+	"icon": "door_open.png",
+	"version": "1.1",
+	"creation_date": "2017-09-29",
+	"modification_date": "2017-10-06",
+	"author": "Influman & Madoma73",
+	"description_fr": "Donne l'état des ouvertures en un seul message. Utile pour les notifications notamment.<BR>En option, positionne un état à 0 (tout est fermé) ou 100 (au moins une ouverture)",
+	"description_en": "",
+	"description_es": "",
+	"description_it": "",
+	"description_de": "",
+	"forum_link": "http://forum.eedomus.com/viewtopic.php?f=50&t=3421",
+	"parameters":
+  [
+		{
+      "parameter": "config_url",
+      "description": "",
+      "xtype": "displayfield",
+			"field": "style: 'padding: 3px;', value: 'Cliquez <a href=\\'https://secure.eedomus.com/script_proxy/?exec=ouvertures.php&mode=list\\' target=\\'_blank\\'>ici pour lister les codes API de vos détecteurs d\\'ouverture</a>'"
+    },
+		{
+      "parameter": "device_list",
+      "description": "Liste des <a href='http://doc.eedomus.com/view/Code_API' target='_blank'>codes API</a> des périphériques",
+			"xtype": "textfield",
+			"default_value": "",
+			"field": "width:300, allowBlank:false"
+    }
+  ],
+	"scripts":
+	[
+		{
+			"name": "ouvertures.php"
+		}
+	],
+	"devices":
+  [
+		{
+			"device_id": "etat",
+			"module_id": "51",
+			"type": "http",
+			"name_fr": "Etat des Ouvertures",
+			"icon": "door_open.png",
+			"utilisation_id": "35",
+			"parameters":
+			{
+				"VAR1": "Utilisez le lien ci-dessous",
+       	"VAR2": "pour lister vos détecteurs d'ouvertures",
+				"VAR3": "https://secure.eedomus.com/script_proxy/?exec=ouvertures.php&mode=list",
+				"value_type": "string",
+				"ignore_errors": 3,
+				"RAW_URL": "http://localhost/script/?exec=ouvertures.php&mode=poll&periphIds=plugin.parameters.device_list",
+				"RAW_XPATH": "/OUVERTURES/MESSAGE",
+				"POLLING": "1"
+			}
+			
+    }
+  ]
+}
+
+
+
